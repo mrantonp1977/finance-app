@@ -22,7 +22,7 @@ export default function Page() {
         </div>
       </div>
       <div className="h-full bg-blue-800 hidden lg:flex items-center justify-center">
-        <h1 className="text-white text-6xl font-bold items-center justify-center mr-5">
+        <h1 className="text-amber-300 text-6xl font-bold items-center justify-center mr-5">
           Finance
         </h1>
         <Image src="/logo.svg" alt="Logo" width={200} height={200} />
