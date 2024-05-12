@@ -2,9 +2,13 @@ import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 import { ClerkProvider } from '@clerk/nextjs';
 import './globals.css';
+import { QueryProvider } from '@/providers/query-provider';
+import { SheetProvider } from '@/providers/sheet-provider';
 
-
-const poppins = Poppins({ subsets: ['latin'], weight: ['400', '500', '600', '700', '800'] });
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+});
 
 export const metadata: Metadata = {
   title: 'Finance',
@@ -20,7 +24,10 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={poppins.className}>
-          {children}
+          <QueryProvider>
+            <SheetProvider />
+            {children}
+          </QueryProvider>
         </body>
       </html>
     </ClerkProvider>
