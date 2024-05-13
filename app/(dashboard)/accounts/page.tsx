@@ -9,7 +9,8 @@ import { DataTable } from '@/components/data-table';
 import { columns } from './columns';
 import { useGetAccounts } from '@/features/accounts/api/use-get-accounts';
 import { Skeleton } from '@/components/ui/skeleton';
-import { useBulkDeleteAccounts } from '@/features/accounts/api/use-bulk-delete';
+import { useBulkDeleteAccounts } from '@/features/accounts/api/use-bulk-delete-accounts';
+
 
 
 
@@ -54,7 +55,7 @@ const AccountsPage = () => {
           <DataTable
             columns={columns}
             data={accounts}
-            filterKey="email"
+            filterKey="name"
             onDelete={(row) => {
               const ids = row.map((r) => r.original.id);
               deleteAccounts.mutate({ ids });

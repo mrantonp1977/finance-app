@@ -21,7 +21,7 @@ export default function Page() {
           </ClerkLoading>
         </div>
       </div>
-      <div className="h-full bg-blue-800 hidden lg:flex items-center justify-center">
+      <div className="h-full bg-gradient-to-b from-black to-blue-800 hidden lg:flex items-center justify-center">
         <h1 className="text-amber-300 text-6xl font-bold items-center justify-center mr-5">
           Finance
         </h1>
