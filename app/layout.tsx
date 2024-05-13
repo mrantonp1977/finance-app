@@ -5,6 +5,7 @@ import './globals.css';
 import { QueryProvider } from '@/providers/query-provider';
 import { SheetProvider } from '@/providers/sheet-provider';
 import { Toaster } from '@/components/ui/sonner';
+import { shadesOfPurple } from '@clerk/themes';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -22,7 +23,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
+    <ClerkProvider appearance={{
+      baseTheme: shadesOfPurple
+    }}>
       <html lang="en">
         <body className={poppins.className}>
           <QueryProvider>
