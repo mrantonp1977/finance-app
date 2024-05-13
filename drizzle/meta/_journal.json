@@ -15,6 +15,13 @@
       "when": 1715458646063,
       "tag": "0001_motionless_galactus",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1715597809592,
+      "tag": "0002_chief_rhodey",
+      "breakpoints": true
     }
   ]
 }
