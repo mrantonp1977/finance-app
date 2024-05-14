@@ -6,7 +6,7 @@ import {
   SheetTitle,
 } from '@/components/ui/sheet';
 
-import { AccountForm } from './account-form';
+import { AccountForm } from './transaction-form';
 import { insertAccountSchema } from '@/db/schema';
 import { z } from 'zod';
 
