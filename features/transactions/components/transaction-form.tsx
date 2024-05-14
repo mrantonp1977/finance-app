@@ -1,3 +1,4 @@
+import { AmountInput } from '@/components/amount-input';
 import { DatePicker } from '@/components/date-picker';
 import { Select } from '@/components/select';
 import { Button } from '@/components/ui/button';
@@ -11,6 +12,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { insertTransactionSchema } from '@/db/schema';
+import { convertAmountToMiliunits } from '@/lib/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Trash } from 'lucide-react';
 import { useForm } from 'react-hook-form';
@@ -61,7 +63,13 @@ export const TransactionForm = ({
   });
 
   const handleSubmit = (values: FormValues) => {
-    console.log(values);
+    const amount = parseFloat(values.amount);
+    const amountInMiliunits = convertAmountToMiliunits(amount)
+
+    onSubmit({
+      ...values,
+      amount: amountInMiliunits,  
+    })
   };
 
   const handleDelete = () => {
@@ -144,6 +152,22 @@ export const TransactionForm = ({
           )}
         />
         <FormField
+          name="amount"
+          control={form.control}
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Amount</FormLabel>
+              <FormControl>
+                <AmountInput 
+                  {...field}
+                  disabled={disabled}
+                  placeholder='0.00'
+                />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+        <FormField
           name="notes"
           control={form.control}
           render={({ field }) => (
@@ -161,7 +185,7 @@ export const TransactionForm = ({
           )}
         />
         <Button className="w-full" disabled={disabled}>
-          {id ? 'Save changes' : 'Add account'}
+          {id ? 'Save changes' : 'Add transaction'}
         </Button>
         {!!id && (
           <Button
@@ -172,7 +196,7 @@ export const TransactionForm = ({
             variant="outline"
           >
             <Trash className="h-4 w-4 mr-2" />
-            Delete account
+            Delete transaction
           </Button>
         )}
       </form>
